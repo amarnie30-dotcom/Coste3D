@@ -10,7 +10,7 @@ struct ResultCard: View {
                     .font(.headline)
                 Text(job.costPerPart, format: .currency(code: "EUR"))
                     .font(.system(size: 34, weight: .bold, design: .rounded))
-                Text("Precio sugerido: \(job.suggestedPricePerPart, format: .currency(code: \"EUR\"))")
+                Text("Precio sugerido: \(formatted(job.suggestedPricePerPart))")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -45,5 +45,9 @@ struct ResultCard: View {
                 .monospacedDigit()
         }
         .font(.subheadline)
+    }
+
+    private func formatted(_ value: Double) -> String {
+        value.formatted(.currency(code: "EUR"))
     }
 }
